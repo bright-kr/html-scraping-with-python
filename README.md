@@ -1,6 +1,6 @@
 # Python으로 HTML Webスクレイピング하기
 
-[![Bright Data Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/)
+[![Bright Data Promo](https://github.com/bright-kr/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/)
 
 이 튜토리얼에서는 HTML의 기본과 Python을 사용하여 웹 데이터를 수집하고, 파싱하고, 처리하는 방법을 다룹니다:
 
@@ -69,7 +69,7 @@ Python이 설치되어 있다면 버전 번호가 표시되며, 그렇지 않다
 
 다음으로 `WebScraper`라는 폴더를 만들고, 그 안에 `scraper.py`라는 파일을 생성하십시오. 선호하는 통합 개발 환경(IDE)에서 이 파일을 여십시오. 이 가이드에서는 [Visual Studio Code](https://code.visualstudio.com/)를 사용합니다:
 
-![VSCode showing the project](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/an-image-showing-where-VSC-is-used-1.png)
+![VSCode showing the project](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/an-image-showing-where-VSC-is-used-1.png)
 
 IDE는 개발자가 코드를 작성하고, 디버그하고, 프로그램을 테스트하고, 자동화를 만들 수 있도록 하는 종합 도구입니다. 이를 사용하여 HTML 스크레이퍼를 개발합니다.
 
@@ -95,7 +95,7 @@ python<version> -m venv <virtual-environment-name>
 
 그러면 프로젝트 폴더 내에 모든 패키지와 스크립트를 위한 디렉터리가 생성됩니다:
 
-![Virtual environment folder creation](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Command-to-create-a-folder-for-all-the-packages-and-scripts-1.png)
+![Virtual environment folder creation](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/Command-to-create-a-folder-for-all-the-packages-and-scripts-1.png)
 
 이제 시스템에 맞는 적절한 명령을 사용하여 가상 환경을 활성화하십시오:
 
@@ -110,7 +110,7 @@ source <virtual-environment-name>/bin/activate #In MacOS and Linux
 
 성공적으로 활성화되면 터미널 왼쪽에 가상 환경 이름이 표시됩니다:
 
-![Virtual environment activation indicator](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-name-of-your-virtual-environment-1.png)
+![Virtual environment activation indicator](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/The-name-of-your-virtual-environment-1.png)
 
 가상 환경이 활성화된 상태에서 web scraping 라이브러리를 설치하십시오. 선택지는 [Playwright](https://playwright.dev/), [Selenium](https://www.selenium.dev/), [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), [Scrapy](https://scrapy.org/) 등이 있습니다. 이 튜토리얼에서는 사용이 쉽고, 여러 브라우저를 지원하며, 동적 콘텐츠를 처리하고, headless 모드(GUI 없이 スクレイピング)를 제공하는 [Playwright](https://playwright.dev/python/docs/intro)를 사용합니다.
 
@@ -202,17 +202,17 @@ main()
 
 Visual Studio Code에서는 추출된 HTML이 다음과 같이 표시됩니다:
 
-![Extracted HTML in VSCode](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-extracted-HTML-in-VSC-1.png)
+![Extracted HTML in VSCode](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/The-extracted-HTML-in-VSC-1.png)
 
 ## Targeting Specific HTML Elements
 
 전체 웹페이지를 추출하는 것도 가능하지만, 특정 정보에 집중할 때 web scraping은 진정한 가치를 발휘합니다. 이 섹션에서는 웹사이트 첫 페이지에서 노트북 제목만 추출하겠습니다:
 
-![Laptop titles to extract](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Showing-the-titles-we-are-going-to-extract-from-the-target-website-1.png)
+![Laptop titles to extract](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/Showing-the-titles-we-are-going-to-extract-from-the-target-website-1.png)
 
 특정 요소를 추출하려면 먼저 웹사이트 구조를 이해해야 합니다. 페이지에서 마우스 오른쪽 버튼을 클릭하고 **Inspect**를 선택하십시오:
 
-![Using inspect on the target website](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Click-on-inspect-on-the-target-website-1.png)
+![Using inspect on the target website](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/Click-on-inspect-on-the-target-website-1.png)
 
 또는 다음 키보드 단축키를 사용할 수 있습니다:
 - macOS: **Cmd + Option + I**
@@ -220,15 +220,15 @@ Visual Studio Code에서는 추출된 HTML이 다음과 같이 표시됩니다:
 
 다음은 타겟 페이지의 구조입니다:
 
-![HTML structure of target website](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-HTML-structure-of-the-target-website-1.png)
+![HTML structure of target website](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/The-HTML-structure-of-the-target-website-1.png)
 
 **Inspect** 창의 왼쪽 상단에 있는 선택 도구를 사용하면 특정 페이지 요소를 검사할 수 있습니다:
 
-![Inspecting specific elements](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/How-to-inspect-specific-items-in-the-source-code-1.png)
+![Inspecting specific elements](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/How-to-inspect-specific-items-in-the-source-code-1.png)
 
 **Inspect** 창에서 노트북 제목 중 하나를 선택하십시오:
 
-![Inspecting a laptop title](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Inspecting-one-of-the-titles-we-want-to-scrape-1.png)
+![Inspecting a laptop title](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/Inspecting-one-of-the-titles-we-want-to-scrape-1.png)
 
 각 제목이 `<a> </a>` 태그 안에 포함되어 있고, `h4` 태그로 감싸져 있으며, 링크에 `title` class가 있는 것을 확인할 수 있습니다. 따라서 `title` class를 가진 `<h4>` 태그 내부의 `<a href>` 태그를 찾아야 합니다.
 
@@ -275,7 +275,7 @@ print(titles)
 
 출력은 요소 배열로 표시됩니다:
 
-![Array of heading elements](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Array-of-elements-after-printing-the-titles-1.png)
+![Array of heading elements](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/Array-of-elements-after-printing-the-titles-1.png)
 
 이 출력은 제목을 직접 보여주지 않고, 기준에 일치하는 요소를 참조합니다. 이 요소들을 루프 처리하여 `title` class를 가진 `<a>` 태그를 찾아 텍스트를 추출해야 합니다.
 
@@ -288,7 +288,7 @@ for title in titles:
 
 이 코드를 실행하면 다음과 같은 출력이 생성됩니다:
 
-![Output of title extraction](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/An-image-of-how-the-output-should-look-like-1.png)
+![Output of title extraction](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/An-image-of-how-the-output-should-look-like-1.png)
 
 빈 배열을 필터링하려면 다음을 추가하십시오:
 
@@ -332,7 +332,7 @@ main()
 
 웹사이트 하단에는 페이지네이션 버튼이 있습니다. 프로그래밍 방식으로 "2" 버튼을 찾아 클릭해야 합니다. 페이지를 검사해 보면 이 요소는 텍스트 "2"를 가진 list item(``<li>`` 태그)임이 드러납니다:
 
-![Pagination element with text "2"](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-required-element-has-an-inner-text-of-2-1.png)
+![Pagination element with text "2"](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/The-required-element-has-an-inner-text-of-2-1.png)
 
 `get_by_role()` selector로 list item을 찾고, `get_by_text()` selector로 "2"를 포함하는 텍스트를 찾을 수 있습니다:
 
@@ -531,7 +531,7 @@ main()
 
 이 코드를 실행한 후 CSV 파일은 다음과 같이 표시되어야 합니다:
 
-![CSV file output example](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Example-of-how-the-CSV-file-should-look-like-1.png)
+![CSV file output example](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/Example-of-how-the-CSV-file-should-look-like-1.png)
 
 ## Final Thoughts
 
