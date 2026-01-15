@@ -1,4 +1,4 @@
-# Python으로 HTML Webスクレイピング하기
+# Python으로 HTML Web스크레이핑하기
 
 [![Bright Data Promo](https://github.com/bright-kr/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/)
 
@@ -16,7 +16,7 @@
 
 ## Introduction to HTML Structure
 
-スクレイピング에 들어가기 전에, HTML의 구성 요소를 이해하는 것이 중요합니다.
+스크레이핑에 들어가기 전에, HTML의 구성 요소를 이해하는 것이 중요합니다.
 
 HTML은 웹페이지의 구조와 구성 요소를 정의하는 태그로 이루어져 있습니다. 예를 들어, `<h1> Text </h1>`는 제목 텍스트를 정의하고, `<a href=""> link </a>`는 하이퍼링크를 생성합니다.
 
@@ -59,7 +59,7 @@ ID 요소를 타겟팅하는 구문은 `#id-name`입니다.
 
 ## Setting Up Your Python Environment
 
-이 가이드는 다양한 HTML スクレイピング 라이브러리와 초보자 친화적인 문법을 갖춘 Python을 사용합니다. Python이 설치되어 있는지 확인하려면 PowerShell(Windows) 또는 Terminal(macOS)에서 다음 명령을 실행하십시오:
+이 가이드는 다양한 HTML 스크레이핑 라이브러리와 초보자 친화적인 문법을 갖춘 Python을 사용합니다. Python이 설치되어 있는지 확인하려면 PowerShell(Windows) 또는 Terminal(macOS)에서 다음 명령을 실행하십시오:
 
 ```sh
 python3
@@ -73,7 +73,7 @@ Python이 설치되어 있다면 버전 번호가 표시되며, 그렇지 않다
 
 IDE는 개발자가 코드를 작성하고, 디버그하고, 프로그램을 테스트하고, 자동화를 만들 수 있도록 하는 종합 도구입니다. 이를 사용하여 HTML 스크레이퍼를 개발합니다.
 
-이제 가상 환경을 생성하여 전역 Python 설치를 スクレイピング 프로젝트와 분리하십시오. 이는 의존성 충돌을 방지하고 프로젝트를 체계적으로 유지하는 데 도움이 됩니다.
+이제 가상 환경을 생성하여 전역 Python 설치를 스크레이핑 프로젝트와 분리하십시오. 이는 의존성 충돌을 방지하고 프로젝트를 체계적으로 유지하는 데 도움이 됩니다.
 
 다음 명령으로 `virtualenv` 라이브러리를 설치하십시오:
 
@@ -112,7 +112,7 @@ source <virtual-environment-name>/bin/activate #In MacOS and Linux
 
 ![Virtual environment activation indicator](https://github.com/bright-kr/html-scraping-with-python/blob/main/images/The-name-of-your-virtual-environment-1.png)
 
-가상 환경이 활성화된 상태에서 web scraping 라이브러리를 설치하십시오. 선택지는 [Playwright](https://playwright.dev/), [Selenium](https://www.selenium.dev/), [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), [Scrapy](https://scrapy.org/) 등이 있습니다. 이 튜토리얼에서는 사용이 쉽고, 여러 브라우저를 지원하며, 동적 콘텐츠를 처리하고, headless 모드(GUI 없이 スクレイピング)를 제공하는 [Playwright](https://playwright.dev/python/docs/intro)를 사용합니다.
+가상 환경이 활성화된 상태에서 web scraping 라이브러리를 설치하십시오. 선택지는 [Playwright](https://playwright.dev/), [Selenium](https://www.selenium.dev/), [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), [Scrapy](https://scrapy.org/) 등이 있습니다. 이 튜토리얼에서는 사용이 쉽고, 여러 브라우저를 지원하며, 동적 콘텐츠를 처리하고, headless 모드(GUI 없이 스크레이핑)를 제공하는 [Playwright](https://playwright.dev/python/docs/intro)를 사용합니다.
 
 `pip install pytest-playwright`를 실행하여 Playwright를 설치한 다음, `playwright install`로 필요한 브라우저를 설치하십시오.
 
@@ -120,11 +120,11 @@ source <virtual-environment-name>/bin/activate #In MacOS and Linux
 
 ## Extracting Complete HTML from a Webpage
 
-어떤 スクレイピング 프로젝트에서든 첫 단계는 타겟 웹사이트를 선택하는 것입니다. 이 튜토리얼에서는 [이 e-commerce 테스트 사이트](https://webscraper.io/test-sites/e-commerce/static)를 사용합니다.
+어떤 스크레이핑 프로젝트에서든 첫 단계는 타겟 웹사이트를 선택하는 것입니다. 이 튜토리얼에서는 [이 e-commerce 테스트 사이트](https://webscraper.io/test-sites/e-commerce/static)를 사용합니다.
 
 다음으로 어떤 정보를 추출할지 식별하십시오. 먼저 페이지의 전체 HTML 콘텐츠를 캡처하겠습니다.
 
-スクレイピング 타겟을 식별한 후 스크레이퍼 코딩을 시작하십시오. Python에서는 먼저 [필요한 Playwright 라이브러리를 import](https://playwright.dev/python/docs/library)합니다. Playwright는 두 가지 API 유형([sync와 async](https://stackoverflow.com/questions/65439214/what-are-the-differences-between-python-playwright-sync-vs-async-apis))을 제공합니다. 비동기 코드를 작성하지 않으므로 sync 라이브러리를 import합니다:
+스크레이핑 타겟을 식별한 후 스크레이퍼 코딩을 시작하십시오. Python에서는 먼저 [필요한 Playwright 라이브러리를 import](https://playwright.dev/python/docs/library)합니다. Playwright는 두 가지 API 유형([sync와 async](https://stackoverflow.com/questions/65439214/what-are-the-differences-between-python-playwright-sync-vs-async-apis))을 제공합니다. 비동기 코드를 작성하지 않으므로 sync 라이브러리를 import합니다:
 
 ```python
 from playwright.sync_api import sync_playwright
@@ -232,7 +232,7 @@ Visual Studio Code에서는 추출된 HTML이 다음과 같이 표시됩니다:
 
 각 제목이 `<a> </a>` 태그 안에 포함되어 있고, `h4` 태그로 감싸져 있으며, 링크에 `title` class가 있는 것을 확인할 수 있습니다. 따라서 `title` class를 가진 `<h4>` 태그 내부의 `<a href>` 태그를 찾아야 합니다.
 
-타겟팅된 スクレイピング 프로그램을 만들기 위해 필요한 라이브러리를 import하고, Python 함수를 생성하고, 브라우저를 실행한 다음, 노트북 페이지로 이동하십시오:
+타겟팅된 스크레이핑 프로그램을 만들기 위해 필요한 라이브러리를 import하고, Python 함수를 생성하고, 브라우저를 실행한 다음, 노트북 페이지로 이동하십시오:
 
 ```python
 from playwright.sync_api import sync_playwright
@@ -326,7 +326,7 @@ main()
 
 ## Interacting with Page Elements
 
-여러 페이지에서 제목을 추출하도록 스크레이퍼를 개선해 보겠습니다. 첫 번째 노트북 페이지에서 제목을 スクレイピング하고, 두 번째 페이지로 이동한 뒤, 그 제목도 추출하겠습니다.
+여러 페이지에서 제목을 추출하도록 스크레이퍼를 개선해 보겠습니다. 첫 번째 노트북 페이지에서 제목을 스크레이핑하고, 두 번째 페이지로 이동한 뒤, 그 제목도 추출하겠습니다.
 
 이미 제목을 추출하는 방법은 알고 있으므로, 다음 페이지로 이동하는 방법만 배우면 됩니다.
 
@@ -405,7 +405,7 @@ main()
 
 ## Saving Extracted Data to CSV
 
-スクレイピング한 데이터는 저장하고 분석해야 유용합니다. 이제 사용자가 몇 개의 노트북 페이지를 スクレイピング할지 입력하도록 하고, 제목을 추출해 CSV 파일로 저장하는 고급 프로그램을 작성하겠습니다.
+스크레이핑한 데이터는 저장하고 분석해야 유용합니다. 이제 사용자가 몇 개의 노트북 페이지를 스크레이핑할지 입력하도록 하고, 제목을 추출해 CSV 파일로 저장하는 고급 프로그램을 작성하겠습니다.
 
 먼저 CSV 라이브러리를 import하십시오:
 
@@ -417,7 +417,7 @@ import csv
 
 웹사이트 URL 구조를 보면, 각 노트북 페이지는 URL 파라미터를 사용합니다. 예를 들어, 두 번째 페이지 URL은 https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=2 입니다.
 
-`?page=2` 파라미터를 변경하여 다른 페이지로 이동할 수 있습니다. 사용자에게 몇 페이지를 スクレイピング할지 물어보십시오:
+`?page=2` 파라미터를 변경하여 다른 페이지로 이동할 수 있습니다. 사용자에게 몇 페이지를 스크레이핑할지 물어보십시오:
 
 ```python
 pages = int(input("enter the number of pages to scrape: "))
@@ -535,6 +535,6 @@ main()
 
 ## Final Thoughts
 
-이 가이드는 기본적인 web scraping을 보여주지만, [현실 세계의 시나리오](https://brightdata.co.kr/use-cases)에서는 CAPTCHA, レート制限, 사이트 레이아웃 변경, 규제 요구사항과 같은 과제가 자주 발생합니다. Bright Data는 スクレイピング 성능을 개선하기 위한 [고급 レジデンシャルプロキシ](https://brightdata.co.kr/proxy-types/residential-proxies), 확장 가능한 스크레이퍼 구축을 위한 Web Scraper IDE, 차단된 사이트에 접근하기 위한 [Web Unblocker](https://brightdata.co.kr/products/web-unlocker) 등 이러한 과제를 해결하기 위한 [솔루션](https://brightdata.co.kr/products)을 제공합니다.
+이 가이드는 기본적인 web scraping을 보여주지만, [현실 세계의 시나리오](https://brightdata.co.kr/use-cases)에서는 CAPTCHA, 속도 제한, 사이트 레이아웃 변경, 규제 요구사항과 같은 과제가 자주 발생합니다. Bright Data는 스크레이핑 성능을 개선하기 위한 [고급 レジデンシャル프록시](https://brightdata.co.kr/proxy-types/residential-proxies), 확장 가능한 스크레이퍼 구축을 위한 Web Scraper IDE, 차단된 사이트에 접근하기 위한 [Web Unblocker](https://brightdata.co.kr/products/web-unlocker) 등 이러한 과제를 해결하기 위한 [솔루션](https://brightdata.co.kr/products)을 제공합니다.
 
 지금 무료 체험을 시작해 보십시오!
